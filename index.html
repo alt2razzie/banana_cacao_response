@@ -24,12 +24,7 @@
       --radius-md: 14px;
       --shadow: 0 12px 30px rgba(124, 58, 237, 0.1);
     }
-
-    * {
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-    }
-
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
     body {
       margin: 0;
       min-height: 100vh;
@@ -40,12 +35,7 @@
       display: flex;
       justify-content: center;
     }
-
-    .app-shell {
-      width: 100%;
-      max-width: 540px;
-    }
-
+    .app-shell { width: 100%; max-width: 540px; }
     .hero-card {
       background: linear-gradient(135deg, #7c3aed 0%, #9333ea 55%, #db2777 100%);
       color: #fff;
@@ -54,33 +44,20 @@
       box-shadow: var(--shadow);
       margin-bottom: 14px;
     }
-
     .badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
       background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(6px);
       padding: 5px 12px;
       border-radius: 999px;
       font-size: 0.78rem;
       font-weight: 600;
       margin-bottom: 10px;
     }
-
-    .hero-card h1 {
-      margin: 0 0 8px;
-      font-size: 1.38rem;
-      line-height: 1.28;
-    }
-
-    .hero-card p {
-      margin: 0;
-      font-size: 0.9rem;
-      opacity: 0.95;
-      line-height: 1.45;
-    }
-
+    .hero-card h1 { margin: 0 0 8px; font-size: 1.38rem; line-height: 1.28; }
+    .hero-card p { margin: 0; font-size: 0.9rem; opacity: 0.95; line-height: 1.45; }
+    
     .progress-wrap {
       background: var(--card-bg);
       border-radius: var(--radius-md);
@@ -92,7 +69,6 @@
       z-index: 20;
       border: 1px solid var(--border);
     }
-
     .progress-meta {
       display: flex;
       justify-content: space-between;
@@ -101,14 +77,7 @@
       color: var(--primary-dark);
       margin-bottom: 7px;
     }
-
-    .progress-track {
-      height: 9px;
-      background: var(--primary-soft);
-      border-radius: 999px;
-      overflow: hidden;
-    }
-
+    .progress-track { height: 9px; background: var(--primary-soft); border-radius: 999px; overflow: hidden; }
     .progress-fill {
       height: 100%;
       width: 14%;
@@ -116,7 +85,6 @@
       border-radius: 999px;
       transition: width 0.3s ease;
     }
-
     .card {
       background: var(--card-bg);
       border-radius: var(--radius-lg);
@@ -125,11 +93,6 @@
       border: 1px solid var(--border);
       margin-bottom: 14px;
     }
-
-    .section-header {
-      margin-bottom: 6px;
-    }
-
     .section-tag {
       display: inline-block;
       background: var(--primary-soft);
@@ -140,20 +103,8 @@
       border-radius: 999px;
       margin-bottom: 6px;
     }
-
-    .section-title {
-      margin: 0 0 6px;
-      font-size: 1.12rem;
-      color: var(--text-main);
-    }
-
-    .section-desc {
-      margin: 0;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-      line-height: 1.5;
-    }
-
+    .section-title { margin: 0 0 6px; font-size: 1.12rem; color: var(--text-main); }
+    .section-desc { margin: 0; font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; }
     .info-box {
       background: #faf7ff;
       border: 1px dashed #c4b5fd;
@@ -162,51 +113,14 @@
       margin-top: 12px;
       font-size: 0.86rem;
       line-height: 1.5;
-      color: var(--text-main);
     }
-
-    .info-box h3 {
-      margin: 10px 0 4px;
-      font-size: 0.86rem;
-      color: var(--primary-dark);
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-    }
-
-    .info-box h3:first-child {
-      margin-top: 0;
-    }
-
-    .info-box ul {
-      margin: 4px 0 8px;
-      padding-left: 18px;
-    }
-
-    .q-title {
-      font-size: 0.98rem;
-      font-weight: 700;
-      margin: 0 0 5px;
-      line-height: 1.4;
-    }
-
-    .req-star {
-      color: var(--danger);
-      margin-left: 2px;
-    }
-
-    .q-sub {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      margin: 0 0 12px;
-      line-height: 1.35;
-    }
-
-    .option-list {
-      display: flex;
-      flex-direction: column;
-      gap: 9px;
-    }
-
+    .info-box h3 { margin: 10px 0 4px; font-size: 0.86rem; color: var(--primary-dark); text-transform: uppercase; }
+    .info-box h3:first-child { margin-top: 0; }
+    .info-box ul { margin: 4px 0 8px; padding-left: 18px; }
+    .q-title { font-size: 0.98rem; font-weight: 700; margin: 0 0 5px; line-height: 1.4; }
+    .req-star { color: var(--danger); margin-left: 2px; }
+    .q-sub { font-size: 0.82rem; color: var(--text-muted); margin: 0 0 12px; }
+    .option-list { display: flex; flex-direction: column; gap: 9px; }
     .option-item {
       display: flex;
       align-items: center;
@@ -216,37 +130,16 @@
       border-radius: var(--radius-md);
       background: #fcfbff;
       cursor: pointer;
-      transition: all 0.16s ease;
       font-size: 0.92rem;
-      line-height: 1.35;
     }
-
-    .option-item:active {
-      transform: scale(0.99);
-    }
-
     .option-item.selected {
       border-color: var(--primary);
       background: var(--primary-soft);
       font-weight: 600;
       color: var(--primary-dark);
     }
-
-    .option-item input {
-      accent-color: var(--primary);
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-      margin: 0;
-    }
-
-    .scale-row {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 8px;
-      margin-top: 8px;
-    }
-
+    .option-item input { accent-color: var(--primary); width: 18px; height: 18px; flex-shrink: 0; margin: 0; }
+    .scale-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 8px; }
     .scale-btn {
       padding: 12px 0;
       border-radius: var(--radius-md);
@@ -256,25 +149,9 @@
       font-size: 1rem;
       color: var(--text-main);
       cursor: pointer;
-      transition: all 0.16s ease;
     }
-
-    .scale-btn.selected {
-      background: var(--primary);
-      border-color: var(--primary);
-      color: #fff;
-      transform: translateY(-1px);
-    }
-
-    .scale-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.76rem;
-      color: var(--text-muted);
-      margin-top: 6px;
-      font-weight: 600;
-    }
-
+    .scale-btn.selected { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .scale-labels { display: flex; justify-content: space-between; font-size: 0.76rem; color: var(--text-muted); margin-top: 6px; font-weight: 600; }
     .other-input, .textarea-input {
       width: 100%;
       margin-top: 10px;
@@ -284,25 +161,9 @@
       font-family: inherit;
       font-size: 0.92rem;
       color: var(--text-main);
-      background: #fff;
     }
-
-    .other-input:focus, .textarea-input:focus {
-      outline: none;
-      border-color: var(--primary);
-    }
-
-    .textarea-input {
-      min-height: 105px;
-      resize: vertical;
-    }
-
-    .nav-bar {
-      display: flex;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
+    .textarea-input { min-height: 105px; resize: vertical; }
+    .nav-bar { display: flex; gap: 10px; margin-top: 16px; }
     .btn {
       flex: 1;
       padding: 14px 18px;
@@ -312,29 +173,10 @@
       font-size: 0.96rem;
       font-weight: 700;
       cursor: pointer;
-      transition: transform 0.14s ease, opacity 0.14s ease;
     }
-
-    .btn:active {
-      transform: scale(0.98);
-    }
-
-    .btn-secondary {
-      background: #e9e2ff;
-      color: var(--primary-dark);
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: #fff;
-      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
-    }
-
-    .btn:disabled {
-      opacity: 0.55;
-      cursor: not-allowed;
-    }
-
+    .btn-secondary { background: #e9e2ff; color: var(--primary-dark); }
+    .btn-primary { background: linear-gradient(135deg, var(--primary), var(--accent)); color: #fff; }
+    .btn:disabled { opacity: 0.55; }
     .error-msg {
       background: #ffe4e6;
       color: var(--danger);
@@ -346,16 +188,8 @@
       margin-top: 12px;
       display: none;
     }
-
-    .thank-you {
-      text-align: center;
-      padding: 28px 18px;
-    }
-
-    .thank-you .emoji-big {
-      font-size: 3.2rem;
-      margin-bottom: 10px;
-    }
+    .thank-you { text-align: center; padding: 28px 18px; }
+    .thank-you .emoji-big { font-size: 3.2rem; margin-bottom: 10px; }
   </style>
 </head>
 <body>
@@ -365,7 +199,6 @@
       <h1>Market Survey for the Feasibility Study of Banana-Cacao Jam</h1>
       <p>Made from ripe Cardaba bananas &amp; unsweetened Filipino cacao tablea ✨</p>
     </div>
-
     <div class="progress-wrap" id="progressWrap">
       <div class="progress-meta">
         <span id="pageLabel">Page 1 of 7</span>
@@ -375,18 +208,15 @@
         <div class="progress-fill" id="progressFill"></div>
       </div>
     </div>
-
     <div id="pageContainer"></div>
     <div class="error-msg" id="errorBox"></div>
-
     <div class="nav-bar" id="navBar">
       <button type="button" class="btn btn-secondary" id="backBtn" style="display:none;">← Back</button>
       <button type="button" class="btn btn-primary" id="nextBtn">Next →</button>
     </div>
   </div>
-
-  <script>
-    const SUPABASE_URL = "https://yebdcfexxodhfkkxallxs.supabase.co";
+    <script>
+    const SUPABASE_URL = "https://yebdcfexxodhfkxallxs.supabase.co";
     const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InllYmRjZmV4eG9kaGZreGFsbHhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUzNjczMTIsImV4cCI6MjExMDk0MzMxMn0.LPYAov8mAXn0mKHd17Udve5ioQF501vnz-NM4qxRfG4";
     const STORAGE_DONE_KEY = "banana_cacao_survey_submitted_v1";
 
@@ -395,9 +225,7 @@
       if (window.supabase && SUPABASE_URL.startsWith("https://")) {
         sbClient = window.supabase.createClient(SUPABASE_URL.trim(), SUPABASE_ANON_KEY.trim());
       }
-    } catch (e) {
-      console.error("Supabase init warning:", e);
-    }
+    } catch (e) {}
 
     const DISTRICTS = [
       "Poblacion District", "Talomo District", "Agdao District", "Buhangin District",
@@ -466,46 +294,21 @@
     const state = {
       page: 0,
       answers: {
-        q1_age_18_plus: "",
-        q2_consent: "",
-        q3_age_group: "",
-        q4_district: "",
-        q5_status: "",
-        q5_status_other: "",
-        q6_purchased_6m: "",
-        q7_purchase_frequency: "",
-        q8_spread_types: [],
-        q8_spread_types_other: "",
-        q9_purchase_places: [],
-        q9_purchase_places_other: "",
-        q10_spend_per_purchase: "",
-        q11_influencing_factors: [],
-        q11_influencing_factors_other: "",
-        q12_prior_banana_cacao: "",
-        q13_interest_score: null,
-        q14_appeal_score: null,
-        q15_flavor_balance: "",
-        q16_motivations: [],
-        q16_motivations_other: "",
-        q17_concerns: [],
-        q17_concerns_other: "",
-        q18_buy_4oz_180: "",
-        q19_buy_8oz_250: "",
-        q20_preferred_jar_size: "",
-        q21_jar_size_reason: "",
-        q22_expected_frequency: "",
-        q23_jars_per_occasion: "",
-        q24_preferred_channels: [],
-        q24_preferred_channels_other: "",
-        q25_willingness_boosters: [],
-        q25_willingness_boosters_other: "",
-        q26_comments: ""
+        q1_age_18_plus: "", q2_consent: "", q3_age_group: "", q4_district: "",
+        q5_status: "", q5_status_other: "", q6_purchased_6m: "", q7_purchase_frequency: "",
+        q8_spread_types: [], q8_spread_types_other: "", q9_purchase_places: [],
+        q9_purchase_places_other: "", q10_spend_per_purchase: "", q11_influencing_factors: [],
+        q11_influencing_factors_other: "", q12_prior_banana_cacao: "", q13_interest_score: null,
+        q14_appeal_score: null, q15_flavor_balance: "", q16_motivations: [],
+        q16_motivations_other: "", q17_concerns: [], q17_concerns_other: "",
+        q18_buy_4oz_180: "", q19_buy_8oz_250: "", q20_preferred_jar_size: "",
+        q21_jar_size_reason: "", q22_expected_frequency: "", q23_jars_per_occasion: "",
+        q24_preferred_channels: [], q24_preferred_channels_other: "",
+        q25_willingness_boosters: [], q25_willingness_boosters_other: "", q26_comments: ""
       }
     };
-
     const TOTAL_PAGES = 7;
-
-    function showError(msg) {
+          function showError(msg) {
       const box = document.getElementById("errorBox");
       box.textContent = msg;
       box.style.display = msg ? "block" : "none";
@@ -513,52 +316,34 @@
     }
 
     function escapeHtml(str) {
-      return String(str)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
+      return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     }
 
     function renderRadioCard(qKey, num, label, sub, options, otherKey = null, otherTrigger = "Other") {
       const currentVal = state.answers[qKey];
       const showOther = otherKey && currentVal === otherTrigger;
       const otherVal = otherKey ? state.answers[otherKey] : "";
-
       return `
         <div class="card">
           <div class="q-title">${num}. ${label}<span class="req-star">*</span></div>
-          ${sub ? `<div class="q-sub">${sub}</div>` : `<div class="q-sub">Select one option</div>`}
+          <div class="q-sub">${sub || "Select one option"}</div>
           <div class="option-list">
             ${options.map(opt => {
               const checked = currentVal === opt;
-              return `
-                <label class="option-item ${checked ? "selected" : ""}">
-                  <input type="radio" name="${qKey}" value="${escapeHtml(opt)}" ${checked ? "checked" : ""} />
-                  <span>${escapeHtml(opt)}</span>
-                </label>
-              `;
+              return `<label class="option-item ${checked ? "selected" : ""}">
+                <input type="radio" name="${qKey}" value="${escapeHtml(opt)}" ${checked ? "checked" : ""} />
+                <span>${escapeHtml(opt)}</span>
+              </label>`;
             }).join("")}
           </div>
-          ${otherKey ? `
-            <input
-              type="text"
-              class="other-input"
-              data-other-key="${otherKey}"
-              placeholder="Please specify..."
-              value="${escapeHtml(otherVal)}"
-              style="display:${showOther ? "block" : "none"};"
-            />
-          ` : ""}
-        </div>
-      `;
+          ${otherKey ? `<input type="text" class="other-input" data-other-key="${otherKey}" placeholder="Please specify..." value="${escapeHtml(otherVal)}" style="display:${showOther ? "block" : "none"};" />` : ""}
+        </div>`;
     }
 
     function renderCheckboxCard(qKey, num, label, options, otherKey = null, otherTrigger = "Other") {
       const currentArr = state.answers[qKey] || [];
       const showOther = otherKey && currentArr.includes(otherTrigger);
       const otherVal = otherKey ? state.answers[otherKey] : "";
-
       return `
         <div class="card">
           <div class="q-title">${num}. ${label}<span class="req-star">*</span></div>
@@ -566,26 +351,14 @@
           <div class="option-list">
             ${options.map(opt => {
               const checked = currentArr.includes(opt);
-              return `
-                <label class="option-item ${checked ? "selected" : ""}">
-                  <input type="checkbox" data-check-key="${qKey}" value="${escapeHtml(opt)}" ${checked ? "checked" : ""} />
-                  <span>${escapeHtml(opt)}</span>
-                </label>
-              `;
+              return `<label class="option-item ${checked ? "selected" : ""}">
+                <input type="checkbox" data-check-key="${qKey}" value="${escapeHtml(opt)}" ${checked ? "checked" : ""} />
+                <span>${escapeHtml(opt)}</span>
+              </label>`;
             }).join("")}
           </div>
-          ${otherKey ? `
-            <input
-              type="text"
-              class="other-input"
-              data-other-key="${otherKey}"
-              placeholder="Please specify..."
-              value="${escapeHtml(otherVal)}"
-              style="display:${showOther ? "block" : "none"};"
-            />
-          ` : ""}
-        </div>
-      `;
+          ${otherKey ? `<input type="text" class="other-input" data-other-key="${otherKey}" placeholder="Please specify..." value="${escapeHtml(otherVal)}" style="display:${showOther ? "block" : "none"};" />` : ""}
+        </div>`;
     }
 
     function renderScaleCard(qKey, num, label, lowText, highText) {
@@ -594,55 +367,191 @@
         <div class="card">
           <div class="q-title">${num}. ${label}<span class="req-star">*</span></div>
           <div class="scale-row">
-            ${[1, 2, 3, 4, 5].map(n => `
-              <button type="button" class="scale-btn ${val === n ? "selected" : ""}" data-scale-key="${qKey}" data-scale-val="${n}">${n}</button>
-            `).join("")}
+            ${[1, 2, 3, 4, 5].map(n => `<button type="button" class="scale-btn ${val === n ? "selected" : ""}" data-scale-key="${qKey}" data-scale-val="${n}">${n}</button>`).join("")}
           </div>
-          <div class="scale-labels">
-            <span>${escapeHtml(lowText)}</span>
-            <span>${escapeHtml(highText)}</span>
-          </div>
-        </div>
-      `;
+          <div class="scale-labels"><span>${escapeHtml(lowText)}</span><span>${escapeHtml(highText)}</span></div>
+        </div>`;
     }
 
     function renderPage() {
       showError("");
       const container = document.getElementById("pageContainer");
       const p = state.page;
-
       document.getElementById("pageLabel").textContent = `Page ${p + 1} of ${TOTAL_PAGES}`;
       const pct = Math.round(((p + 1) / TOTAL_PAGES) * 100);
       document.getElementById("percentLabel").textContent = `${pct}%`;
       document.getElementById("progressFill").style.width = `${pct}%`;
-
       document.getElementById("backBtn").style.display = p > 0 ? "block" : "none";
-      const nextBtn = document.getElementById("nextBtn");
-      nextBtn.textContent = p === TOTAL_PAGES - 1 ? "Submit Survey 💜" : "Next →";
+      document.getElementById("nextBtn").textContent = p === TOTAL_PAGES - 1 ? "Submit Survey 💜" : "Next →";
 
       if (p === 0) {
         container.innerHTML = `
           <div class="card">
-            <div class="section-header">
-              <span class="section-tag">Survey Overview</span>
-              <h2 class="section-title">Welcome &amp; Product Concept</h2>
-              <p class="section-desc">Please read the details below before starting.</p>
-            </div>
+            <span class="section-tag">Survey Overview</span>
+            <h2 class="section-title">Welcome &amp; Product Concept</h2>
+            <p class="section-desc">Please read the details below before starting.</p>
             <div class="info-box">
               <h3>Purpose of the Survey</h3>
               <p>This survey is conducted for academic feasibility study purposes. It aims to assess the potential market acceptance, consumer preferences, willingness to purchase, price acceptability, and potential demand for a proposed Banana-Cacao Jam product.</p>
-
               <h3>Product Concept</h3>
               <p>Banana-Cacao Jam is a proposed sweet spread made primarily from ripe Cardaba bananas combined with unsweetened Filipino cacao tablea. The banana provides natural sweetness, while the tablea contributes a rich, roasted cacao flavor that may help balance the sweetness. The final recipe and formulation are still subject to development and testing.</p>
-
               <h3>Proposed Prices</h3>
               <ul>
                 <li>4 oz jar (approximately 113 g): <strong>₱180</strong></li>
                 <li>8 oz jar (approximately 227 g): <strong>₱250</strong></li>
               </ul>
               <p><em>*Prices will be subject to consumer response.</em> These prices are preliminary assumptions for the feasibility study and may change based on production costs and market findings.</p>
-
               <h3>Confidentiality and Voluntary Participation</h3>
               <p>Participation is voluntary. Do not provide your name or other identifying information. Responses will be used for academic feasibility study purposes and analyzed in summary form. Please answer honestly based on your preferences and purchasing behavior. In accordance with the Data Privacy Act of 2012 (Republic Act No. 10173) and its implementing rules and regulations, the information collected through this survey will be processed solely for academic feasibility study purposes, particularly to assess the potential market acceptance of the proposed Banana-Cacao Jam product.</p>
             </div>
-          </div
+          </div>`;
+      } else if (p === 1) {
+        container.innerHTML = `
+          <div class="card"><span class="section-tag">Section 1</span><h2 class="section-title">Consent and Eligibility</h2><p class="section-desc">Please read the survey information before proceeding.</p></div>
+          ${renderRadioCard("q1_age_18_plus", 1, "Are you 18 years old or older?", "This survey is intended for adults aged 18 and above.", ["Yes", "No"])}
+          ${renderRadioCard("q2_consent", 2, "Do you voluntarily agree to participate in this academic feasibility study survey?", "", ["Yes, I agree to participate.", "No, I do not agree to participate."])}`;
+      } else if (p === 2) {
+        container.innerHTML = `
+          <div class="card"><span class="section-tag">Section 2</span><h2 class="section-title">Respondent Profile</h2><p class="section-desc">This information will help describe the potential target market.</p></div>
+          ${renderRadioCard("q3_age_group", 3, "What is your age group?", "", ["18–24 years old", "25–34 years old", "35–44 years old", "45–54 years old", "55 years old and above"])}
+          ${renderRadioCard("q4_district", 4, "Where do you currently reside?", "", DISTRICTS)}
+          ${renderRadioCard("q5_status", 5, "What is your current status?", "", ["Student", "Residential/Household Customer", "Seller (business owner)", "Other"], "q5_status_other", "Other")}`;
+      } else if (p === 3) {
+        container.innerHTML = `
+          <div class="card"><span class="section-tag">Section 3</span><h2 class="section-title">Jam and Sweet Spread Buying Behavior</h2><p class="section-desc">Answer based on your actual purchasing habits and experience.</p></div>
+          ${renderRadioCard("q6_purchased_6m", 6, "Have you purchased jam or a sweet spread within the past six months?", "", ["Yes", "No", "Not sure"])}
+          ${renderRadioCard("q7_purchase_frequency", 7, "How often do you usually purchase jam or sweet spreads?", "", ["More than once a week", "Once a week", "Two to three times a month", "Once a month", "Once every two to three months", "Less often", "I have never purchased these products"])}
+          ${renderCheckboxCard("q8_spread_types", 8, "Which types of jam or sweet spreads have you purchased?", SPREAD_TYPES, "q8_spread_types_other", "Other")}
+          ${renderCheckboxCard("q9_purchase_places", 9, "Where do you usually purchase jam or sweet spreads?", PURCHASE_PLACES, "q9_purchase_places_other", "Other")}
+          ${renderRadioCard("q10_spend_per_purchase", 10, "Approximately how much do you usually spend on jam or a sweet spread per purchase?", "", ["Below ₱100", "₱100–₱149", "₱150–₱199", "₱200–₱299", "₱300 or more", "I do not usually purchase these products"])}
+          ${renderCheckboxCard("q11_influencing_factors", 11, "What factors influence your decision to purchase jam or a sweet spread?", INFLUENCING_FACTORS, "q11_influencing_factors_other", "Other")}`;
+      }
+            else if (p === 4) {
+        container.innerHTML = `
+          <div class="card">
+            <span class="section-tag">Section 4</span>
+            <h2 class="section-title">Banana-Cacao Jam Product Concept</h2>
+            <p class="section-desc">Please read the following product description carefully.</p>
+            <div class="info-box">
+              <h3>Banana-Cacao Jam</h3>
+              <p>A proposed sweet spread made primarily from ripe Cardaba bananas and unsweetened Filipino cacao tablea. The bananas contribute natural sweetness, while the tablea provides a rich, roasted cacao flavor that may help balance the sweetness. The product is intended as a spread for bread, crackers, and other suitable foods.</p>
+              <h3>Proposed Packaging and Prices</h3>
+              <ul>
+                <li>4 oz jar (approximately 113 g): <strong>₱180</strong></li>
+                <li>8 oz jar (approximately 227 g): <strong>₱250</strong></li>
+              </ul>
+              <p>The product is still a proposal for feasibility study purposes. The final recipe, taste, nutritional composition, packaging, and commercial price have not necessarily been finalized.</p>
+            </div>
+          </div>
+          ${renderRadioCard("q12_prior_banana_cacao", 12, "Before this survey, had you considered or encountered a spread combining banana and cacao or chocolate?", "", ["Yes, I have tried a similar product.", "I have seen or heard of a similar product but have not tried it.", "No, this is new to me."])}
+          ${renderScaleCard("q13_interest_score", 13, "How interested are you in trying Banana-Cacao Jam based on the description?", "Not interested", "Very interested")}
+          ${renderScaleCard("q14_appeal_score", 14, "How appealing is the combination of Cardaba banana and unsweetened cacao tablea to you?", "Not appealing", "Very appealing")}
+          ${renderRadioCard("q15_flavor_balance", 15, "Which flavor balance would you prefer for Banana-Cacao Jam?", "", FLAVOR_OPTIONS)}
+          ${renderCheckboxCard("q16_motivations", 16, "What would motivate you to try Banana-Cacao Jam?", MOTIVATIONS, "q16_motivations_other", "Other")}
+          ${renderCheckboxCard("q17_concerns", 17, "What concerns might prevent you from purchasing Banana-Cacao Jam?", CONCERNS, "q17_concerns_other", "Other")}`;
+      } else if (p === 5) {
+        container.innerHTML = `
+          <div class="card"><span class="section-tag">Section 5</span><h2 class="section-title">Willingness to Purchase and Price Acceptance</h2><p class="section-desc">Assume that the product meets acceptable food-safety and quality standards. Consider whether you would actually buy it at the proposed price.</p></div>
+          ${renderRadioCard("q18_buy_4oz_180", 18, "How likely would you be to purchase a 4 oz jar of Banana-Cacao Jam for ₱180?", "", LIKELIHOOD_OPTIONS)}
+          ${renderRadioCard("q19_buy_8oz_250", 19, "How likely would you be to purchase an 8 oz jar of Banana-Cacao Jam for ₱250?", "", LIKELIHOOD_OPTIONS)}
+          ${renderRadioCard("q20_preferred_jar_size", 20, "Which jar size would you prefer if you decided to purchase Banana-Cacao Jam?", "", ["4 oz jar for ₱180", "8 oz jar for ₱250", "Either size", "Neither size at the proposed prices", "Not sure"])}
+          ${renderRadioCard("q21_jar_size_reason", 21, "What is the main reason for your preferred jar size?", "", JAR_REASONS, null, "")}
+          ${renderRadioCard("q22_expected_frequency", 22, "If you liked the product, how often would you expect to purchase Banana-Cacao Jam?", "", ["Weekly", "Two to three times a month", "Once a month", "Once every two to three months", "Only for special occasions", "I might try it once but probably would not repurchase", "I would not purchase it", "Not sure"])}
+          ${renderRadioCard("q23_jars_per_occasion", 23, "How many jars would you most likely purchase per buying occasion?", "", ["One jar", "Two jars", "Three jars", "Four or more jars", "Depends on the price and size", "I would not purchase the product"])}`;
+      } else if (p === 6) {
+        container.innerHTML = `
+          <div class="card"><span class="section-tag">Section 6</span><h2 class="section-title">Preferred Purchase Channels and Suggestions</h2><p class="section-desc">These questions will help assess where and how potential customers would prefer to purchase the product.</p></div>
+          ${renderCheckboxCard("q24_preferred_channels", 24, "Where would you prefer to purchase Banana-Cacao Jam?", ["Social Media pages", "Flea Markets", "School or University", "Bakeries/Cafes", "Other"], "q24_preferred_channels_other", "Other")}
+          ${renderCheckboxCard("q25_willingness_boosters", 25, "What would increase your willingness to purchase Banana-Cacao Jam?", ["Lower price", "Free samples or product tasting", "Discounts or bundle offers", "Smaller trial-size packaging", "Larger jar with better value", "Clear ingredient and nutrition information", "Evidence of food-safety and quality standards", "Customer reviews", "Convenient delivery or store availability", "Different levels of sweetness or cacao intensity", "I would not be interested regardless of these factors", "Other"], "q25_willingness_boosters_other", "Other")}
+          <div class="card">
+            <div class="q-title">26. Do you have any additional comments, suggestions, or expectations for Banana-Cacao Jam?</div>
+            <div class="q-sub">Optional</div>
+            <textarea class="textarea-input" id="q26Input" placeholder="Your answer...">${escapeHtml(state.answers.q26_comments)}</textarea>
+          </div>`;
+      }
+      bindPageEvents();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function bindPageEvents() {
+      document.querySelectorAll('input[type="radio"]').forEach(r => r.addEventListener("change", e => { state.answers[e.target.name] = e.target.value; renderPage(); }));
+      document.querySelectorAll('input[type="checkbox"]').forEach(cb => cb.addEventListener("change", e => {
+        const key = e.target.dataset.checkKey, val = e.target.value, arr = state.answers[key];
+        if (e.target.checked) { if (!arr.includes(val)) arr.push(val); } else { state.answers[key] = arr.filter(x => x !== val); }
+        renderPage();
+      }));
+      document.querySelectorAll(".scale-btn").forEach(btn => btn.addEventListener("click", () => { state.answers[btn.dataset.scaleKey] = Number(btn.dataset.scaleVal); renderPage(); }));
+      document.querySelectorAll(".other-input").forEach(inp => inp.addEventListener("input", e => { state.answers[e.target.dataset.otherKey] = e.target.value; }));
+      const q26 = document.getElementById("q26Input");
+      if (q26) q26.addEventListener("input", e => { state.answers.q26_comments = e.target.value; });
+    }
+
+    function validateCurrentPage() {
+      const a = state.answers, p = state.page;
+      if (p === 1) {
+        if (!a.q1_age_18_plus) return "Please answer Question 1.";
+        if (a.q1_age_18_plus === "No") return "Sorry, this survey is intended for adults aged 18 and above.";
+        if (!a.q2_consent) return "Please answer Question 2.";
+        if (a.q2_consent.startsWith("No")) return "Voluntary agreement is required to proceed.";
+      } else if (p === 2) {
+        if (!a.q3_age_group || !a.q4_district || !a.q5_status) return "Please answer all questions on this page.";
+        if (a.q5_status === "Other" && !a.q5_status_other.trim()) return "Please specify 'Other' for Question 5.";
+      } else if (p === 3) {
+        if (!a.q6_purchased_6m || !a.q7_purchase_frequency || !a.q8_spread_types.length || !a.q9_purchase_places.length || !a.q10_spend_per_purchase || !a.q11_influencing_factors.length) return "Please answer all required questions on this page.";
+        if (a.q8_spread_types.includes("Other") && !a.q8_spread_types_other.trim()) return "Please specify 'Other' for Question 8.";
+        if (a.q9_purchase_places.includes("Other") && !a.q9_purchase_places_other.trim()) return "Please specify 'Other' for Question 9.";
+        if (a.q11_influencing_factors.includes("Other") && !a.q11_influencing_factors_other.trim()) return "Please specify 'Other' for Question 11.";
+      } else if (p === 4) {
+        if (!a.q12_prior_banana_cacao || !a.q13_interest_score || !a.q14_appeal_score || !a.q15_flavor_balance || !a.q16_motivations.length || !a.q17_concerns.length) return "Please answer all required questions on this page.";
+        if (a.q16_motivations.includes("Other") && !a.q16_motivations_other.trim()) return "Please specify 'Other' for Question 16.";
+        if (a.q17_concerns.includes("Other") && !a.q17_concerns_other.trim()) return "Please specify 'Other' for Question 17.";
+      } else if (p === 5) {
+        if (!a.q18_buy_4oz_180 || !a.q19_buy_8oz_250 || !a.q20_preferred_jar_size || !a.q21_jar_size_reason || !a.q22_expected_frequency || !a.q23_jars_per_occasion) return "Please answer all required questions on this page.";
+      } else if (p === 6) {
+        if (!a.q24_preferred_channels.length || !a.q25_willingness_boosters.length) return "Please answer Questions 24 and 25.";
+        if (a.q24_preferred_channels.includes("Other") && !a.q24_preferred_channels_other.trim()) return "Please specify 'Other' for Question 24.";
+        if (a.q25_willingness_boosters.includes("Other") && !a.q25_willingness_boosters_other.trim()) return "Please specify 'Other' for Question 25.";
+      }
+      return "";
+    }
+
+    async function submitSurvey() {
+      if (!sbClient) { showError("Supabase key is missing in index.html."); return; }
+      const nextBtn = document.getElementById("nextBtn");
+      nextBtn.disabled = true; nextBtn.textContent = "Submitting...";
+      const payload = {
+        ...state.answers,
+        q5_status_other: state.answers.q5_status === "Other" ? state.answers.q5_status_other.trim() : null,
+        q8_spread_types_other: state.answers.q8_spread_types.includes("Other") ? state.answers.q8_spread_types_other.trim() : null,
+        q9_purchase_places_other: state.answers.q9_purchase_places.includes("Other") ? state.answers.q9_purchase_places_other.trim() : null,
+        q11_influencing_factors_other: state.answers.q11_influencing_factors.includes("Other") ? state.answers.q11_influencing_factors_other.trim() : null,
+        q16_motivations_other: state.answers.q16_motivations.includes("Other") ? state.answers.q16_motivations_other.trim() : null,
+        q17_concerns_other: state.answers.q17_concerns.includes("Other") ? state.answers.q17_concerns_other.trim() : null,
+        q24_preferred_channels_other: state.answers.q24_preferred_channels.includes("Other") ? state.answers.q24_preferred_channels_other.trim() : null,
+        q25_willingness_boosters_other: state.answers.q25_willingness_boosters.includes("Other") ? state.answers.q25_willingness_boosters_other.trim() : null,
+        q26_comments: state.answers.q26_comments.trim() || null
+      };
+      const { error } = await sbClient.from("banana_cacao_responses").insert([payload]);
+      if (error) { nextBtn.disabled = false; nextBtn.textContent = "Submit Survey 💜"; showError("Error: " + error.message); return; }
+      localStorage.setItem(STORAGE_DONE_KEY, "true");
+      renderThankYou();
+    }
+
+    function renderThankYou() {
+      document.getElementById("progressWrap").style.display = "none";
+      document.getElementById("navBar").style.display = "none";
+      showError("");
+      document.getElementById("pageContainer").innerHTML = `<div class="card thank-you"><div class="emoji-big">🍌🍫✨</div><h2 class="section-title">Salamat! Response Recorded</h2><p class="section-desc">Thank you for taking part in the market feasibility study for Banana-Cacao Jam!</p></div>`;
+    }
+
+    document.getElementById("backBtn").addEventListener("click", () => { if (state.page > 0) { state.page -= 1; renderPage(); } });
+    document.getElementById("nextBtn").addEventListener("click", async () => {
+      const err = validateCurrentPage();
+      if (err) { showError(err); return; }
+      if (state.page < TOTAL_PAGES - 1) { state.page += 1; renderPage(); } else { await submitSurvey(); }
+    });
+
+    if (localStorage.getItem(STORAGE_DONE_KEY) === "true") { renderThankYou(); } else { renderPage(); }
+  </script>
+</body>
+</html>
