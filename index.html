@@ -386,11 +386,18 @@
   </div>
 
   <script>
-    const SUPABASE_URL = "https://yebdcfexxodhfkxallxs.supabase.co";
+    const SUPABASE_URL = "https://yebdcfexxodhfkkxallxs.supabase.co";
     const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InllYmRjZmV4eG9kaGZreGFsbHhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUzNjczMTIsImV4cCI6MjExMDk0MzMxMn0.LPYAov8mAXn0mKHd17Udve5ioQF501vnz-NM4qxRfG4";
     const STORAGE_DONE_KEY = "banana_cacao_survey_submitted_v1";
 
-    const sbClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    let sbClient = null;
+    try {
+      if (window.supabase && SUPABASE_URL.startsWith("https://")) {
+        sbClient = window.supabase.createClient(SUPABASE_URL.trim(), SUPABASE_ANON_KEY.trim());
+      }
+    } catch (e) {
+      console.error("Supabase init warning:", e);
+    }
 
     const DISTRICTS = [
       "Poblacion District", "Talomo District", "Agdao District", "Buhangin District",
@@ -505,6 +512,14 @@
       if (msg) box.scrollIntoView({ behavior: "smooth", block: "nearest" });
     }
 
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
     function renderRadioCard(qKey, num, label, sub, options, otherKey = null, otherTrigger = "Other") {
       const currentVal = state.answers[qKey];
       const showOther = otherKey && currentVal === otherTrigger;
@@ -591,14 +606,6 @@
       `;
     }
 
-    function escapeHtml(str) {
-      return String(str)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;");
-    }
-
     function renderPage() {
       showError("");
       const container = document.getElementById("pageContainer");
@@ -638,10 +645,4 @@
               <h3>Confidentiality and Voluntary Participation</h3>
               <p>Participation is voluntary. Do not provide your name or other identifying information. Responses will be used for academic feasibility study purposes and analyzed in summary form. Please answer honestly based on your preferences and purchasing behavior. In accordance with the Data Privacy Act of 2012 (Republic Act No. 10173) and its implementing rules and regulations, the information collected through this survey will be processed solely for academic feasibility study purposes, particularly to assess the potential market acceptance of the proposed Banana-Cacao Jam product.</p>
             </div>
-          </div>
-        `;
-      } else if (p === 1) {
-        container.innerHTML = `
-          <div class="card">
-            <span class="section-tag">Section 1</span>
-            <h2 class="section-title">Co
+          </div
