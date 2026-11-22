@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#7c3aed" />
+  <title>Banana-Cacao Jam Market Survey</title>
+  <link rel="manifest" href="manifest.json" />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <style>
+    :root {
+      --bg-start: #f5f0ff;
+      --bg-end: #fdf2f8;
+      --card-bg: #ffffff;
+      --primary: #7c3aed;
+      --primary-dark: #5b21b6;
+      --primary-soft: #ede9fe;
+      --accent: #ec4899;
+      --text-main: #1e1b4b;
+      --text-muted: #5b5877;
+      --border: #e5defa;
+      --danger: #e11d48;
+      --radius-lg: 22px;
+      --radius-md: 14px;
+      --shadow: 0 12px 30px rgba(124, 58, 237, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(160deg, var(--bg-start) 0%, var(--bg-end) 100%);
+      color: var(--text-main);
+      padding: 16px 14px 48px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .app-shell {
+      width: 100%;
+      max-width: 540px;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, #7c3aed 0%, #9333ea 55%, #db2777 100%);
+      color: #fff;
+      border-radius: var(--radius-lg);
+      padding: 22px 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(6px);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+
+    .hero-card h1 {
+      margin: 0 0 8px;
+      font-size: 1.38rem;
+      line-height: 1.28;
+    }
+
+    .hero-card p {
+      margin: 0;
+      font-size: 0.9rem;
+      opacity: 0.95;
+      line-height: 1.45;
+    }
+
+    .progress-wrap {
+      background: var(--card-bg);
+      border-radius: var(--radius-md);
+      padding: 12px 16px;
+      box-shadow: var(--shadow);
+      margin-bottom: 14px;
+      position: sticky;
+      top: 10px;
+      z-index: 20;
+      border: 1px solid var(--border);
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 7px;
+    }
+
+    .progress-track {
+      height: 9px;
+      background: var(--primary-soft);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      width: 14%;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 18px 16px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      margin-bottom: 14px;
+    }
+
+    .section-header {
+      margin-bottom: 6px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--primary-soft);
+      color: var(--primary-dark);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      margin: 0 0 6px;
+      font-size: 1.12rem;
+      color: var(--text-main);
+    }
+
+    .section-desc {
+      margin: 0;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .info-box {
+      background: #faf7ff;
+      border: 1px dashed #c4b5fd;
+      border-radius: var(--radius-md);
+      padding: 14px;
+      margin-top: 12px;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: var(--text-main);
+    }
+
+    .info-box h3 {
+      margin: 10px 0 4px;
+      font-size: 0.86rem;
+      color: var(--primary-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .info-box h3:first-child {
+      margin-top: 0;
+    }
+
+    .info-box ul {
+      margin: 4px 0 8px;
+      padding-left: 18px;
+    }
+
+    .q-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      margin: 0 0 5px;
+      line-height: 1.4;
+    }
+
+    .req-star {
+      color: var(--danger);
+      margin-left: 2px;
+    }
+
+    .q-sub {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin: 0 0 12px;
+      line-height: 1.35;
+    }
+
+    .option-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .option-item {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      padding: 12px 13px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius-md);
+      background: #fcfbff;
+      cursor: pointer;
+      transition: all 0.16s ease;
+      font-size: 0.92rem;
+      line-height: 1.35;
+    }
+
+    .option-item:active {
+      transform: scale(0.99);
+    }
+
+    .option-item.selected {
+      border-color: var(--primary);
+      background: var(--primary-soft);
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+
+    .option-item input {
+      accent-color: var(--primary);
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin: 0;
+    }
+
+    .scale-row {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .scale-btn {
+      padding: 12px 0;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border);
+      background: #fcfbff;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text-main);
+      cursor: pointer;
+      transition: all 0.16s ease;
+    }
+
+    .scale-btn.selected {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+      transform: translateY(-1px);
+    }
+
+    .scale-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-weight: 600;
+    }
+
+    .other-input, .textarea-input {
+      width: 100%;
+      margin-top: 10px;
+      padding: 12px 13px;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border);
+      font-family: inherit;
+      font-size: 0.92rem;
+      color: var(--text-main);
+      background: #fff;
+    }
+
+    .other-input:focus, .textarea-input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .textarea-input {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    .nav-bar {
+      display: flex;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 14px 18px;
+      border-radius: var(--radius-md);
+      border: none;
+      font-family: inherit;
+      font-size: 0.96rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.14s ease, opacity 0.14s ease;
+    }
+
+    .btn:active {
+      transform: scale(0.98);
+    }
+
+    .btn-secondary {
+      background: #e9e2ff;
+      color: var(--primary-dark);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #fff;
+      box-shadow: 0 8px 20px rgba(124, 58, 237, 0.25);
+    }
+
+    .btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    .error-msg {
+      background: #ffe4e6;
+      color: var(--danger);
+      border: 1px solid #fecdd3;
+      padding: 11px 14px;
+      border-radius: var(--radius-md);
+      font-size: 0.86rem;
+      font-weight: 600;
+      margin-top: 12px;
+      display: none;
+    }
+
+    .thank-you {
+      text-align: center;
+      padding: 28px 18px;
+    }
+
+    .thank-you .emoji-big {
+      font-size: 3.2rem;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <div class="hero-card">
+      <div class="badge">🍌🍫 Feasibility Study Survey</div>
+      <h1>Market Survey for the Feasibility Study of Banana-Cacao Jam</h1>
+      <p>Made from ripe Cardaba bananas &amp; unsweetened Filipino cacao tablea ✨</p>
+    </div>
+
+    <div class="progress-wrap" id="progressWrap">
+      <div class="progress-meta">
+        <span id="pageLabel">Page 1 of 7</span>
+        <span id="percentLabel">14%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+    </div>
+
+    <div id="pageContainer"></div>
+    <div class="error-msg" id="errorBox"></div>
+
+    <div class="nav-bar" id="navBar">
+      <button type="button" class="btn btn-secondary" id="backBtn" style="display:none;">← Back</button>
+      <button type="button" class="btn btn-primary" id="nextBtn">Next →</button>
+    </div>
+  </div>
+
+  <script>
+    const SUPABASE_URL = "https://yebdcfexxodhfkxallxs.supabase.co";
+    const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InllYmRjZmV4eG9kaGZreGFsbHhzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTUzNjczMTIsImV4cCI6MjExMDk0MzMxMn0.LPYAov8mAXn0mKHd17Udve5ioQF501vnz-NM4qxRfG4";
+    const STORAGE_DONE_KEY = "banana_cacao_survey_submitted_v1";
+
+    const sbClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+
+    const DISTRICTS = [
+      "Poblacion District", "Talomo District", "Agdao District", "Buhangin District",
+      "Bunawan District", "Paquibato District", "Baguio District", "Calinan District",
+      "Marilog District", "Toril District", "Tugbok District"
+    ];
+
+    const SPREAD_TYPES = [
+      "Strawberry or other berry jam", "Pineapple jam", "Mango jam",
+      "Coconut jam or coco jam", "Chocolate or cacao spread", "Peanut butter",
+      "Other fruit jams", "I have not purchased any of these", "Other"
+    ];
+
+    const PURCHASE_PLACES = [
+      "Supermarkets", "Convenience stores", "Sari-sari stores", "Public markets",
+      "Online marketplaces", "Social media sellers", "Directly from local producers",
+      "Bakeries or specialty food stores", "Other"
+    ];
+
+    const INFLUENCING_FACTORS = [
+      "Price", "Taste and flavor", "Quality and ingredients", "Brand reputation",
+      "Nutritional value", "Sugar content", "Packaging and appearance",
+      "Product size or quantity", "Availability and convenience", "Local production",
+      "Recommendations and customer reviews", "Other"
+    ];
+
+    const FLAVOR_OPTIONS = [
+      "Sweeter banana flavor with a mild cacao taste",
+      "Balanced banana sweetness and cacao flavor",
+      "Strong cacao flavor with less sweetness",
+      "Strong banana flavor with a subtle cacao taste",
+      "No preference",
+      "Not sure until I try it"
+    ];
+
+    const MOTIVATIONS = [
+      "Unique banana and cacao combination", "Curiosity about a new product",
+      "Use of locally sourced ingredients", "Rich chocolate or cacao flavor",
+      "Banana flavor", "Lower added sugar, if achieved and verified",
+      "Affordable price", "Attractive packaging",
+      "Recommendations from family or friends", "Positive customer reviews",
+      "Versatility for bread, crackers, desserts, or snacks", "Other"
+    ];
+
+    const CONCERNS = [
+      "Price may be too high", "Unsure whether I would like the taste",
+      "Concern about sweetness or sugar content", "Concern about ingredients or additives",
+      "Unfamiliarity with the product", "Concern about quality or food safety",
+      "Concern about shelf life or storage", "Jar size may not suit my needs",
+      "I prefer familiar brands", "I do not usually eat jam or sweet spreads",
+      "No major concerns", "Other"
+    ];
+
+    const LIKELIHOOD_OPTIONS = [
+      "Definitely would not buy", "Probably would not buy", "Not sure",
+      "Probably would buy", "Definitely would buy"
+    ];
+
+    const JAR_REASONS = [
+      "Lower initial spending", "Better value for money",
+      "Suitable quantity for personal consumption", "Suitable quantity for family consumption",
+      "I want to try the product before buying more", "I expect to use it frequently",
+      "Neither size meets my needs", "Other considerations"
+    ];
+
+    const state = {
+      page: 0,
+      answers: {
+        q1_age_18_plus: "",
+        q2_consent: "",
+        q3_age_group: "",
+        q4_district: "",
+        q5_status: "",
+        q5_status_other: "",
+        q6_purchased_6m: "",
+        q7_purchase_frequency: "",
+        q8_spread_types: [],
+        q8_spread_types_other: "",
+        q9_purchase_places: [],
+        q9_purchase_places_other: "",
+        q10_spend_per_purchase: "",
+        q11_influencing_factors: [],
+        q11_influencing_factors_other: "",
+        q12_prior_banana_cacao: "",
+        q13_interest_score: null,
+        q14_appeal_score: null,
+        q15_flavor_balance: "",
+        q16_motivations: [],
+        q16_motivations_other: "",
+        q17_concerns: [],
+        q17_concerns_other: "",
+        q18_buy_4oz_180: "",
+        q19_buy_8oz_250: "",
+        q20_preferred_jar_size: "",
+        q21_jar_size_reason: "",
+        q22_expected_frequency: "",
+        q23_jars_per_occasion: "",
+        q24_preferred_channels: [],
+        q24_preferred_channels_other: "",
+        q25_willingness_boosters: [],
+        q25_willingness_boosters_other: "",
+        q26_comments: ""
+      }
+    };
+
+    const TOTAL_PAGES = 7;
+
+    function showError(msg) {
+      const box = document.getElementById("errorBox");
+      box.textContent = msg;
+      box.style.display = msg ? "block" : "none";
+      if (msg) box.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+
+    function renderRadioCard(qKey, num, label, sub, options, otherKey = null, otherTrigger = "Other") {
+      const currentVal = state.answers[qKey];
+      const showOther = otherKey && currentVal === otherTrigger;
+      const otherVal = otherKey ? state.answers[otherKey] : "";
+
+      return `
+        <div class="card">
+          <div class="q-title">${num}. ${label}<span class="req-star">*</span></div>
+          ${sub ? `<div class="q-sub">${sub}</div>` : `<div class="q-sub">Select one option</div>`}
+          <div class="option-list">
+            ${options.map(opt => {
+              const checked = currentVal === opt;
+              return `
+                <label class="option-item ${checked ? "selected" : ""}">
+                  <input type="radio" name="${qKey}" value="${escapeHtml(opt)}" ${checked ? "checked" : ""} />
+                  <span>${escapeHtml(opt)}</span>
+                </label>
+              `;
+            }).join("")}
+          </div>
+          ${otherKey ? `
+            <input
+              type="text"
+              class="other-input"
+              data-other-key="${otherKey}"
+              placeholder="Please specify..."
+              value="${escapeHtml(otherVal)}"
+              style="display:${showOther ? "block" : "none"};"
+            />
+          ` : ""}
+        </div>
+      `;
+    }
+
+    function renderCheckboxCard(qKey, num, label, options, otherKey = null, otherTrigger = "Other") {
+      const currentArr = state.answers[qKey] || [];
+      const showOther = otherKey && currentArr.includes(otherTrigger);
+      const otherVal = otherKey ? state.answers[otherKey] : "";
+
+      return `
+        <div class="card">
+          <div class="q-title">${num}. ${label}<span class="req-star">*</span></div>
+          <div class="q-sub">Select all that apply</div>
+          <div class="option-list">
+            ${options.map(opt => {
+              const checked = currentArr.includes(opt);
+              return `
+                <label class="option-item ${checked ? "selected" : ""}">
+                  <input type="checkbox" data-check-key="${qKey}" value="${escapeHtml(opt)}" ${checked ? "checked" : ""} />
+                  <span>${escapeHtml(opt)}</span>
+                </label>
+              `;
+            }).join("")}
+          </div>
+          ${otherKey ? `
+            <input
+              type="text"
+              class="other-input"
+              data-other-key="${otherKey}"
+              placeholder="Please specify..."
+              value="${escapeHtml(otherVal)}"
+              style="display:${showOther ? "block" : "none"};"
+            />
+          ` : ""}
+        </div>
+      `;
+    }
+
+    function renderScaleCard(qKey, num, label, lowText, highText) {
+      const val = state.answers[qKey];
+      return `
+        <div class="card">
+          <div class="q-title">${num}. ${label}<span class="req-star">*</span></div>
+          <div class="scale-row">
+            ${[1, 2, 3, 4, 5].map(n => `
+              <button type="button" class="scale-btn ${val === n ? "selected" : ""}" data-scale-key="${qKey}" data-scale-val="${n}">${n}</button>
+            `).join("")}
+          </div>
+          <div class="scale-labels">
+            <span>${escapeHtml(lowText)}</span>
+            <span>${escapeHtml(highText)}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    function escapeHtml(str) {
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;");
+    }
+
+    function renderPage() {
+      showError("");
+      const container = document.getElementById("pageContainer");
+      const p = state.page;
+
+      document.getElementById("pageLabel").textContent = `Page ${p + 1} of ${TOTAL_PAGES}`;
+      const pct = Math.round(((p + 1) / TOTAL_PAGES) * 100);
+      document.getElementById("percentLabel").textContent = `${pct}%`;
+      document.getElementById("progressFill").style.width = `${pct}%`;
+
+      document.getElementById("backBtn").style.display = p > 0 ? "block" : "none";
+      const nextBtn = document.getElementById("nextBtn");
+      nextBtn.textContent = p === TOTAL_PAGES - 1 ? "Submit Survey 💜" : "Next →";
+
+      if (p === 0) {
+        container.innerHTML = `
+          <div class="card">
+            <div class="section-header">
+              <span class="section-tag">Survey Overview</span>
+              <h2 class="section-title">Welcome &amp; Product Concept</h2>
+              <p class="section-desc">Please read the details below before starting.</p>
+            </div>
+            <div class="info-box">
+              <h3>Purpose of the Survey</h3>
+              <p>This survey is conducted for academic feasibility study purposes. It aims to assess the potential market acceptance, consumer preferences, willingness to purchase, price acceptability, and potential demand for a proposed Banana-Cacao Jam product.</p>
+
+              <h3>Product Concept</h3>
+              <p>Banana-Cacao Jam is a proposed sweet spread made primarily from ripe Cardaba bananas combined with unsweetened Filipino cacao tablea. The banana provides natural sweetness, while the tablea contributes a rich, roasted cacao flavor that may help balance the sweetness. The final recipe and formulation are still subject to development and testing.</p>
+
+              <h3>Proposed Prices</h3>
+              <ul>
+                <li>4 oz jar (approximately 113 g): <strong>₱180</strong></li>
+                <li>8 oz jar (approximately 227 g): <strong>₱250</strong></li>
+              </ul>
+              <p><em>*Prices will be subject to consumer response.</em> These prices are preliminary assumptions for the feasibility study and may change based on production costs and market findings.</p>
+
+              <h3>Confidentiality and Voluntary Participation</h3>
+              <p>Participation is voluntary. Do not provide your name or other identifying information. Responses will be used for academic feasibility study purposes and analyzed in summary form. Please answer honestly based on your preferences and purchasing behavior. In accordance with the Data Privacy Act of 2012 (Republic Act No. 10173) and its implementing rules and regulations, the information collected through this survey will be processed solely for academic feasibility study purposes, particularly to assess the potential market acceptance of the proposed Banana-Cacao Jam product.</p>
+            </div>
+          </div>
+        `;
+      } else if (p === 1) {
+        container.innerHTML = `
+          <div class="card">
+            <span class="section-tag">Section 1</span>
+            <h2 class="section-title">Co
